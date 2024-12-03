@@ -13,6 +13,14 @@ public class ProductDTO {
         this.promotion = promotion;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getPromotion() {
+        return promotion;
+    }
+
 
     @Override
     public String toString() {

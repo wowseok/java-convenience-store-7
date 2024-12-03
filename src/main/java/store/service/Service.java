@@ -19,5 +19,4 @@ public class Service {
             ProductFactory.createProductDTO(name, price, quantity, promotion);
         }
     }
-
 }
