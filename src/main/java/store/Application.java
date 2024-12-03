@@ -1,7 +1,12 @@
 package store;
 
+import store.controller.MainController;
+import store.service.Service;
+import store.view.OutputView;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        MainController mainController = new MainController(new Service(), new OutputView());
+        mainController.run();
     }
 }
