@@ -1,5 +1,6 @@
 package store.controller;
 
+import java.util.List;
 import store.service.Service;
 import store.util.FileReader;
 import store.util.StringParser;
@@ -22,6 +23,10 @@ public class MainController {
     private void inputBuyItem() {
         outputView.printIntroMessage();
         service.setUpFile(StringParser.parseFileContent(readFile()));
+        // Service에서 포맷된 데이터를 가져와 View에 전달
+        List<String> formattedProducts = service.getFormattedProducts();
+        outputView.printInventory(formattedProducts);
+        outputView.printPurchaseMessage();
         service.setUp(InputView.readLine());
     }
 

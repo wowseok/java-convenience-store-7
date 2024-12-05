@@ -3,6 +3,7 @@ package store.service;
 import java.util.List;
 import java.util.Map;
 import store.domain.product.ProductFactory;
+import store.domain.product.ProductFormatter;
 import store.domain.product.dto.ProductDTORepository;
 
 public class Service {
@@ -25,6 +26,11 @@ public class Service {
             ProductFactory.createProductDTO(name, price, quantity, promotion);
         }
         dtoRepository.setUpDefaultProduct();
+    }
+
+    public List<String> getFormattedProducts() {
+        // ProductFormatter를 사용해 포맷된 제품 정보를 반환
+        return ProductFormatter.formatProducts(dtoRepository.getProducts());
     }
 
 

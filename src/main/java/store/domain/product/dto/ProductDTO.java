@@ -25,6 +25,9 @@ public class ProductDTO {
         return promotion;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
 
     @Override
     public String toString() {

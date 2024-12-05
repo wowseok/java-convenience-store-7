@@ -19,6 +19,10 @@ public class ProductDTORepository {
 
     }
 
+    public List<ProductDTO> getProducts() {
+        return new ArrayList<>(products);
+    }
+
     public void setUpDefaultProduct() {
         List<ProductDTO> newDefaults = new ArrayList<>();
         for (ProductDTO product : products) { // 원본 리스트 순회
@@ -28,9 +32,6 @@ public class ProductDTORepository {
             }
         }
         addNewProducts(newDefaults);
-        for (ProductDTO product : products) {
-            System.out.println(product);
-        }
     }
 
     private void addNewProducts(List<ProductDTO> newDefaults) {
