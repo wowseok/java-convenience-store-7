@@ -16,10 +16,10 @@ public class MainController {
     }
 
     public void run() {
-        process(this::inputXX);
+        process(this::inputBuyItem);
     }
 
-    private void inputXX() {
+    private void inputBuyItem() {
         outputView.printIntroMessage();
         service.setUpFile(StringParser.parseFileContent(readFile()));
         service.setUp(InputView.readLine());
