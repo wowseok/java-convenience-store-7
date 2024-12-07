@@ -14,7 +14,7 @@ public class ProductRepository {
         return INSTANCE;
     }
 
-    public void addProductDTO(Product product) {
+    public void addProduct(Product product) {
         products.add(product);
 
     }
@@ -37,7 +37,7 @@ public class ProductRepository {
     private void addNewProducts(List<Product> newDefaults) {
         // 순회가 끝난 뒤, 원본 리스트에 새 상품 추가
         for (Product newProduct : newDefaults) {
-            addProductDTO(newProduct);
+            addProduct(newProduct);
         }
     }
 
