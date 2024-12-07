@@ -23,7 +23,8 @@ public class MainController {
 
     private void inputBuyItem() {
         outputView.printIntroMessage();
-        service.setUpFile(StringParser.parseFileContent(readFile()));
+        service.setUpProductFile(StringParser.parseFileContent(readFile("src/main/resources/products.md")));
+        service.setUpPromotionFile(StringParser.parseFileContent(readFile("src/main/resources/promotions.md")));
         InventoryFactory.createInventory();
         List<String> formattedProducts = service.getFormattedProducts();
         outputView.printInventory(formattedProducts);
@@ -31,8 +32,8 @@ public class MainController {
         service.setUp(InputView.readLine());
     }
 
-    private String readFile() {
-        return FileReader.readFileToString("src/main/resources/products.md");
+    private String readFile(String file) {
+        return FileReader.readFileToString(file);
     }
 
 

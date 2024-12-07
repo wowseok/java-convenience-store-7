@@ -18,12 +18,12 @@ public class StringParser {
     }
 
     private static List<Map<String, String>> parseData(String[] lines, String[] headers) {
-        List<Map<String, String>> products = new ArrayList<>();
+        List<Map<String, String>> data = new ArrayList<>();
         for (int i = 1; i < lines.length; i++) {
             Map<String, String> parsedData = mapLineToData(lines[i], headers);
-            products.add(parsedData);
+            data.add(parsedData);
         }
-        return products;
+        return data;
     }
 
     private static Map<String, String> mapLineToData(String line, String[] headers) {
