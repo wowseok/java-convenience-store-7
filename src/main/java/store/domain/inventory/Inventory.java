@@ -3,6 +3,7 @@ package store.domain.inventory;
 import java.util.ArrayList;
 import java.util.List;
 import store.domain.product.Product;
+import store.domain.promotion.Promotion;
 
 public class Inventory {
 
@@ -17,11 +18,44 @@ public class Inventory {
 
 
     public void addDefaultProduct(Product product) {
-        defaultInventory.addProduct(product);
+        defaultInventory.add(product);
     }
 
     public void addPromotionProduct(Product product) {
-        promotionInventory.addProduct(product);
+        promotionInventory.add(product);
+    }
+
+    public void removeProductByName(String productName, int quantity) {
+
+        removePromotionProduct(productName, quantity);
+        removeDefaultProduct(productName, quantity);
+    }
+
+    private void removeDefaultProduct(String productName, int quantity) {
+        if (promotionInventory.findByName(productName) == null) {
+            if (defaultInventory.findByName(productName) != null) {
+                Product product = defaultInventory.findByName(productName);
+                if (product.getQuantity() >= quantity) {
+                    defaultInventory.remove(product, quantity);
+                }
+            }
+
+            if (defaultInventory.findByName(productName) == null) {
+                throw new IllegalArgumentException("존재하지 않는 상품입니다");
+            }
+        }
+    }
+
+    private void removePromotionProduct(String productName, int quantity) {
+        if (promotionInventory.findByName(productName) != null) {
+            Product product = promotionInventory.findByName(productName);
+            Promotion promotion = Promotion.findByName(product.getPromotion());
+            if (promotion.isValid()) {
+                if (product.getQuantity() >= quantity) {
+                    promotionInventory.remove(product, quantity);
+                }
+            }
+        }
     }
 
     public static Inventory getInstance() {

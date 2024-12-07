@@ -37,10 +37,20 @@ public class Promotion {
         return startDate;
     }
 
+    public static Promotion findByName(String promotionName) {
+        PromotionRepository repository = PromotionRepository.getInstance();
+        for (Promotion promotion : repository.getPromotions()) {
+            if (promotion.getName().equals(promotionName)) {
+                return promotion;
+            }
+        }
+        return null; // 제품을 찾지 못한 경우
+    }
+
     // 프로모션 기간 내에 현재 날짜가 포함되는지 확인
 
     // 날짜 비교 결과 출력
-    public boolean isPromotionValid() {
+    public boolean isValid() {
         // String now = "2024-05-01";  // 기준 날짜
         // String start = "2024-01-01";  // 시작 날짜
         // String end = "2024-12-31";  // 종료 날짜

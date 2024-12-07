@@ -1,6 +1,5 @@
 package store.controller;
 
-import java.util.List;
 import store.domain.inventory.InventoryFactory;
 import store.service.Service;
 import store.util.FileReader;
@@ -26,10 +25,10 @@ public class MainController {
         service.setUpProductFile(StringParser.parseFileContent(readFile("src/main/resources/products.md")));
         service.setUpPromotionFile(StringParser.parseFileContent(readFile("src/main/resources/promotions.md")));
         InventoryFactory.createInventory();
-        List<String> formattedProducts = service.getFormattedProducts();
-        outputView.printInventory(formattedProducts);
+        outputView.printInventory(service.getFormattedProducts());
         outputView.printPurchaseMessage();
-        service.setUp(InputView.readLine());
+        service.setUpPurchaseProducts(InputView.readLine());
+        outputView.printInventory(service.getFormattedProducts());
     }
 
     private String readFile(String file) {

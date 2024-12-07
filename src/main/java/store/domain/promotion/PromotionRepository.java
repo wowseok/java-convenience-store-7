@@ -18,4 +18,8 @@ public class PromotionRepository {
         promotions.add(promotion);
 
     }
+
+    public List<Promotion> getPromotions() {
+        return new ArrayList<>(promotions);
+    }
 }
