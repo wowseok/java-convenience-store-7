@@ -2,19 +2,22 @@ package store.service;
 
 import java.util.List;
 import java.util.Map;
+import store.domain.inventory.Inventory;
 import store.domain.product.ProductFactory;
 import store.domain.product.ProductFormatter;
-import store.domain.product.dto.ProductDTORepository;
+import store.domain.product.ProductRepository;
 
 public class Service {
-    private final ProductDTORepository dtoRepository;
+    private final ProductRepository dtoRepository;
+    private final Inventory inventory;
 
     public void setUp(String input) {
 
     }
 
     public Service() {
-        this.dtoRepository = ProductDTORepository.getInstance();
+        this.dtoRepository = ProductRepository.getInstance();
+        this.inventory = Inventory.getInstance();
     }
 
     public void setUpFile(List<Map<String, String>> products) {
@@ -30,7 +33,7 @@ public class Service {
 
     public List<String> getFormattedProducts() {
         // ProductFormatter를 사용해 포맷된 제품 정보를 반환
-        return ProductFormatter.formatProducts(dtoRepository.getProducts());
+        return ProductFormatter.formatProducts(inventory.getAllProducts());
     }
 
 

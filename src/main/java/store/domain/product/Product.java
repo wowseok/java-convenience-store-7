@@ -1,12 +1,12 @@
-package store.domain.product.dto;
+package store.domain.product;
 
-public class ProductDTO {
+public class Product {
     private final String name;
     private final int price;
     private final int quantity;
     private final String promotion;
 
-    public ProductDTO(String name, int price, int quantity, String promotion) {
+    public Product(String name, int price, int quantity, String promotion) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
@@ -31,7 +31,7 @@ public class ProductDTO {
 
     @Override
     public String toString() {
-        return String.format("ProductDTO{name='%s', price=%d, quantity=%d, promotion='%s'}",
+        return String.format("Product{name='%s', price=%d, quantity=%d, promotion='%s'}",
                 name, price, quantity, promotion);
     }
 }

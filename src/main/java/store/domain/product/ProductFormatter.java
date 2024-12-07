@@ -3,20 +3,19 @@ package store.domain.product;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
-import store.domain.product.dto.ProductDTO;
 
 public class ProductFormatter {
-    public static List<String> formatProducts(List<ProductDTO> products) {
+    public static List<String> formatProducts(List<Product> products) {
         NumberFormat numberFormat = NumberFormat.getInstance();
         List<String> formattedProducts = new ArrayList<>();
-        for (ProductDTO product : products) {
+        for (Product product : products) {
             specifyFormat(product, numberFormat, formattedProducts);
         }
 
         return formattedProducts;
     }
 
-    private static void specifyFormat(ProductDTO product, NumberFormat numberFormat, List<String> formattedProducts) {
+    private static void specifyFormat(Product product, NumberFormat numberFormat, List<String> formattedProducts) {
         String promotion = formatPromotion(product.getPromotion());
         String quantity = formatQuantity(product.getQuantity());
 

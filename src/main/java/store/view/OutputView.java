@@ -1,15 +1,14 @@
 package store.view;
 
 import java.util.List;
-import store.domain.product.dto.ProductDTORepository;
 
 public class OutputView {
-    private final ProductDTORepository dtoRepository;
+
 
     public static final String ERROR_FORM = "[ERROR] %s%n";
 
     public OutputView() {
-        this.dtoRepository = ProductDTORepository.getInstance();
+
     }
 
     public void printErrorMessage(Throwable throwable) {
